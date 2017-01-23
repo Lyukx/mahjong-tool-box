@@ -100,7 +100,7 @@ function calculate(){
     additionYaku.push(this.value);
   });
   $('[name="display-yaku"]').empty();
-  var additionYakuList = ['立直','一発','嶺上開花','海底','ダブル立直','門前ツモ'];
+  var additionYakuList = ['立直','一発','嶺上開花','海底','ダブル立直','門前ツモ', '槍槓'];
 
   for(var i = 0; i < additionYaku.length; i++){
     if(additionYaku[i] == 5){
