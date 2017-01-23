@@ -102,7 +102,7 @@ function addTile(kind, target, num){
   if(target == 0){
     fuuroTemp = [];
     hand.push(tileId);
-    renewDisplay();
+    $('[name="display-0"]').append('<img src="images/mahjong/p_' + getKind(hand[i]) + 's' + getNum(hand[i]) + '_0.gif">');
   }
   else if(target == 1){
     if(fuuroTemp.length == 0){
