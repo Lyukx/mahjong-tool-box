@@ -25,7 +25,10 @@ function getPoint(han, fu, oyaFlag){
     [["- (1300-2600)"], ["6400 (1600-3200)"], ["7700 (2000-3900)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"], ["満貫 8000 (2000-4000)"]]
     ];
   if(oyaFlag){
-    if(han <= 4){
+    if(han == 0){
+      return "役無し";
+    }
+    else if(han <= 4){
       return oyaSheet[han - 1][getFuIndex(fu)];
     }
     else if(han < 6){
@@ -45,7 +48,10 @@ function getPoint(han, fu, oyaFlag){
     }
   }
   else{
-    if(han <= 4){
+    if(han == 0){
+      return "役無し";
+    }
+    else if(han <= 4){
       return sheet[han - 1][getFuIndex(fu)];
     }
     else if(han < 6){
@@ -78,6 +84,7 @@ function calculate(){
     alert("Tile number is not enough!");
     return -1;
   }
+  hand.sort(sortNumber);
   if(hand.length != 0){
     tiles = tiles + $('[name="display-0"]').html();
   }
@@ -185,6 +192,7 @@ function calculate(){
 
   }
   else{
+    console.log(han, result, oyaFlag);
     htmlContent = htmlContent + '<h2>' + result[0] + "符" + han + "翻</h2>";
     htmlContent = htmlContent + '<h1>' + getPoint(han, result[0], oyaFlag) + '</h1>';
   }

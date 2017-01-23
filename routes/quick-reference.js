@@ -6,6 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('quick-reference');
 });
 
-router.get
 
 module.exports = router;

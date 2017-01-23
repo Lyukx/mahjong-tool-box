@@ -11,6 +11,7 @@ var quick_reference = require('./routes/quick-reference');
 var hand_analysis = require('./routes/hand-analysis');
 var score_calculator = require('./routes/score-calculator');
 var play_record = require('./routes/play-record');
+var manual = require('./routes/manual');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/quick-reference', quick_reference);
 app.use('/hand-analysis', hand_analysis);
 app.use('/score-calculator', score_calculator);
 app.use('/play-record', play_record);
+app.use('/manual', manual);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

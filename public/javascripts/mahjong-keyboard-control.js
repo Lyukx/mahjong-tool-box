@@ -112,6 +112,15 @@ function addTile(kind, target, num){
     $('[name="display-1"]').append('<img src="images/mahjong/p_' + getKind(tileId) + 's' + parseInt(num) + '_0.gif">');
   }
   else if(target == 2){
+    if(ankan.length * 3 + fuuro.length * 3 + hand.length > 10){
+      if(ankan.length * 3 + fuuro.length * 3 + hand.length == 11){
+        agari = hand[hand.length - 1];
+        hand.pop();
+      }
+      else{
+        return -1;
+      }
+    }
     fuuroTemp = [];
     var ankanTemp = [];
     var number = tileId;
@@ -134,7 +143,7 @@ function renewDisplay(target){
   $('[name="display-0"]').empty();
   $('[name="display-1"]').empty();
   $('[name="display-2"]').empty();
-  hand.sort(sortNumber);
+  //hand.sort(sortNumber);
   for(var i = 0; i < hand.length; i++){
     $('[name="display-0"]').append('<img src="images/mahjong/p_' + getKind(hand[i]) + 's' + getNum(hand[i]) + '_0.gif">');
   }

@@ -6,6 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('play-record');
 });
 
-router.get
 
 module.exports = router;
