@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Mahjong Tool Box</title>
+  
+  <!-- -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="AmazeUI/assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="AmazeUI/assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="AmazeUI/assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="AmazeUI/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <link rel="stylesheet" href="AmazeUI/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="AmazeUI/assets/css/app.css">
+</head>
+<body>
+
+<%- include navbar.ejs %>
+<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+  <label class="am-btn am-btn-primary">
+    <input type="radio" name="options" class="needsclick" value="0" id="option1" checked><div id="place1">東</div>
+  </label>
+  <label class="am-btn am-btn-primary">
+    <input type="radio" name="options" class="needsclick" value="1" id="option2"><div id="place2">南</div>
+  </label>
+  <label class="am-btn am-btn-primary">
+    <input type="radio" name="options" class="needsclick" value="2" id="option3"><div id="place3">西</div>
+  </label>
+  <label class="am-btn am-btn-primary">
+    <input type="radio" name="options" class="needsclick" value="3" id="option4"><div id="place4">北</div>
+  </label>
+</div>
+
+<table class="am-table am-table-bordered am-table-radius am-table-striped">
+    <thead>
+        <tr>
+            <td>
+              <input type="text" class="am-form-field am-radius" placeholder='PLAYER 1'/>
+            </td>
+            <td>
+              <input type="text" class="am-form-field am-radius" placeholder='PLAYER 2'/>
+            </td>
+            <td>
+              <input type="text" class="am-form-field am-radius" placeholder='PLAYER 3'/>
+            </td>
+            <td>
+              <input type="text" class="am-form-field am-radius" placeholder='PLAYER 4'/>
+            </td>
+        </tr>     
+    </thead>
+    <tbody id="display"><tr><td>25000</td><td>25000</td><td>25000</td><td>25000</td></tr>
+    </tbody>
+</table>
+<div class="am-g">
+  <div class="am-u-sm-4">
+    <img src="/images/mahjong/riichi.gif">
+  </div>
+  <div class="am-u-sm-2">
+    <div id="display-riichi">× 0</div>
+  </div>
+  <div class="am-u-sm-6">
+    <button class="am-btn am-btn-success am-btn-xs am-round" id="addRiichi">立直棒 + 1</button>
+    <button class="am-btn am-btn-danger am-btn-xs am-round" id="minusRiichi">立直棒 - 1</button>
+  </div>
+</div>
+<br/>
+<div class="am-panel-group" id="accordion">
+  <div class="am-panel am-panel-default">
+    <div class="am-panel-hd" style="text-align: center">
+      <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#addNewRecord'}">
+        ADD NEW RECORD
+      </h4>
+    </div>
+    <div id="addNewRecord" class="am-panel-collapse am-collapse">
+      <div class="am-panel-bd">
+        <div class="am-g">
+          <div class="am-u-sm-3">
+            <input type="text" id="input-1" class="am-form-field am-radius" placeholder='Sample input: "3000"'/>
+          </div>
+          <div class="am-u-sm-3">
+            <input type="text" id="input-2" class="am-form-field am-radius" placeholder='Sample input: "-1000"'/>
+          </div>
+          <div class="am-u-sm-3">
+            <input type="text" id="input-3" class="am-form-field am-radius" placeholder='Sample input: "-1000"'/>
+          </div>
+          <div class="am-u-sm-3">
+            <input type="text" id="input-4" class="am-form-field am-radius" placeholder='Sample input: "-1000"'/>
+          </div>
+        </div>
+        <br>
+        <div style="text-align: center">
+          <button type="button" id="submit-add" class="am-btn am-btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="am-panel am-panel-default">
+    <div class="am-panel-hd" style="text-align: center">
+      <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#addNewRecord-delete'}">
+        DELETE LAST LINE
+      </h4>
+    </div>
+    <div id="addNewRecord-delete" class="am-panel-collapse am-collapse">
+      <div class="am-panel-bd">
+        <div style="text-align: center">
+          <button type="button" id="delete" class="am-btn am-btn-danger">confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="AmazeUI/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="AmazeUI/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="AmazeUI/assets/js/amazeui.min.js"></script>
+<script>
+var points = [25000, 25000, 25000, 25000];
+var oya = 0;
+var riichiNum = 0;
+$(function() {
+  var $radios = $('[name="options"]');
+  $radios.on('change',function() {
+    oya = $radios.filter(':checked').val();
+    var tempArray = ["東", "南", "西", "北"];
+    $('#place1').empty();
+    $('#place2').empty();
+    $('#place3').empty();
+    $('#place4').empty();
+    if(oya == 0){
+      $('#place1').append("東");
+      $('#place2').append("南");
+      $('#place3').append("西");
+      $('#place4').append("北");
+    }
+    if(oya == 1){
+      $('#place2').append("東");
+      $('#place3').append("南");
+      $('#place4').append("西");
+      $('#place1').append("北");
+    }
+    if(oya == 2){
+      $('#place3').append("東");
+      $('#place4').append("南");
+      $('#place1').append("西");
+      $('#place2').append("北");
+    }
+    if(oya == 3){
+      $('#place4').append("東");
+      $('#place1').append("南");
+      $('#place2').append("西");
+      $('#place3').append("北");
+    }
+  });
+});
+
+function getNum(str){
+  if(str != ""){
+    return parseInt(str);
+  }
+  else{
+    return 0;
+  }
+}
+
+$('#submit-add').click(function () {
+  points[0] = points[0] + getNum($('#input-1').val());
+  points[1] = points[1] + getNum($('#input-2').val());
+  points[2] = points[2] + getNum($('#input-3').val());
+  points[3] = points[3] + getNum($('#input-4').val());
+  var tempStr;
+  if(points[0] + points[1] + points[2] + points[3] != 100000){
+    tempStr = "<tr><td><b>" + points[0] + "</b></td><td><b>" + points[1] + "</b></td><td><b>" + points[2] + "</b></td><td><b>" + points[3] + "</b></td></tr>";
+  }
+  else{
+    tempStr = "<tr><td>" + points[0] + "</td><td>" + points[1] + "</td><td>" + points[2] + "</td><td>" + points[3] + "</td></tr>";
+  }
+  $('#display').append(tempStr);
+  $('#input-1').val("");
+  $('#input-2').val("");
+  $('#input-3').val("");
+  $('#input-4').val("");
+  $('#addNewRecord').removeClass("am-in");
+});
+
+$('#addRiichi').click(function () {
+  riichiNum++;
+  $('#display-riichi').empty();
+  $('#display-riichi').append("×" + riichiNum);
+});
+
+$('#minusRiichi').click(function () {
+  if(riichiNum > 0){
+    riichiNum--;
+  }
+  $('#display-riichi').empty();
+  $('#display-riichi').append("×" + riichiNum);
+});
+
+$('#delete').click(function () {
+  $('#display tr:last-child').remove();
+  var lastRecord = $('#display tr:last-child');
+  if(lastRecord.length == 0){
+    $('#display').append("<tr><td>25000</td><td>25000</td><td>25000</td><td>25000</td></tr>");
+    points = [25000, 25000, 25000, 25000];
+  }
+  else{
+    var temp = $('#display tr:last-child').text();
+    for(var i = 0; i < 4; i++){
+      points[i] = parseInt(temp.slice(i * 5, (i + 1) * 5));
+    }
+  }
+  $('#addNewRecord-delete').removeClass("am-in");
+});
+
+</script>
+<script>
+  $(document).ready(function(){
+    $("ul li:eq(2)").addClass('am-active');
+  });
+</script>
+</body>
+</html>

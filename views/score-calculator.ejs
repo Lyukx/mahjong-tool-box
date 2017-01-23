@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Mahjong Tool Box</title>
+
+  <!-- -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="AmazeUI/assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="AmazeUI/assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="AmazeUI/assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="AmazeUI/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <link rel="stylesheet" href="AmazeUI/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="AmazeUI/assets/css/app.css">
+  <style>
+    .centeralign {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<%- include navbar.ejs %>
+
+<div class="centeralign">
+  <h2>点数計算器</h2>
+  <div class="am-btn-group am-btn-group-justify" data-am-button>
+    <label class="am-btn am-btn-primary">
+      <input type="checkbox" name="addition" value="1" class="needsclick"> リーチ
+    </label>
+    <label class="am-btn am-btn-primary">
+      <input type="checkbox" name="addition" value="2" class="needsclick"> 一発
+    </label>
+    <label class="am-btn am-btn-primary">
+      <input type="checkbox" name="addition" value="3" class="needsclick"> 嶺上開花
+    </label>
+  </div>
+  <div class="am-btn-group am-btn-group-justify" data-am-button>
+    <label class="am-btn am-btn-primary">
+      <input type="checkbox" name="addition" value="4" class="needsclick"> 海底/河底
+    </label>
+    <label class="am-btn am-btn-primary">
+      <input type="checkbox" name="addition" value="5" class="needsclick"> ダブル立直
+    </label>
+    <label class="am-btn am-btn-primary">
+      <input type="checkbox" name="addition" value="6" class="needsclick"> ツモ
+    </label>
+  </div>
+  <div class="am-btn-group am-btn-group-justify">
+  <select id="chanfon" data-am-selected="{btnWidth: '33%'}">
+    <option value="31">東場</option>
+    <option value="32">南場</option>
+  </select>
+  <select id="menfon" data-am-selected="{btnWidth: '33%'}">
+    <option value="31">東家</option>
+    <option value="32">南家</option>
+    <option value="33">西家</option>
+    <option value="34">北家</option>
+  </select>
+  <select id="doraNum" data-am-selected="{btnWidth: '33%'}">
+    <option value="0">ドラ 0</option>
+    <option value="1">ドラ 1</option>
+    <option value="2">ドラ 2</option>
+    <option value="3">ドラ 3</option>
+    <option value="4">ドラ 4</option>
+    <option value="5">ドラ 5</option>
+    <option value="6">ドラ 6</option>
+    <option value="7">ドラ 7</option>
+    <option value="8">ドラ 8</option>
+    <option value="9">ドラ 9</option>
+    <option value="10">ドラ 10</option>
+    <option value="11">ドラ 11</option>
+    <option value="12">ドラ 12</option>
+  </select>
+  </div>
+  <table id="tiles" class="am-table am-table-bordered am-table-radius am-table-striped">
+    <thead>
+      <tr>
+        <th>手牌</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div name="display-0" style="min-height:59px"></div></td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th>副露</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div name="display-1" style="min-height:59px"></div></td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th>暗槓</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div name="display-2" style="min-height:59px"></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="result" class="am-g">
+    <div class="am-u-sm-11 am-u-sm-centered">
+      <table class="am-table am-table-bordered am-table-radius am-table-striped">
+        <thead>
+          <tr><th>計算結果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><div name="display-yaku"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+      <label class="am-btn am-btn-primary am-btn-xl">
+        <input type="radio" name="tile-kind" value="30" id="option1" class="needsclick">字
+      </label>
+      <label class="am-btn am-btn-primary am-btn-xl">
+        <input type="radio" name="tile-kind" value="0" id="option2" class="needsclick" checked>萬
+      </label>
+      <label class="am-btn am-btn-primary am-btn-xl">
+        <input type="radio" name="tile-kind" value="10" id="option4" class="needsclick">筒
+      </label>
+      <label class="am-btn am-btn-primary am-btn-xl">
+        <input type="radio" name="tile-kind" value="20" id="option3" class="needsclick">索
+      </label>
+    </div>
+    <div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+      <label class="am-btn am-btn-secondary am-btn-xl">
+        <input type="radio" name="tile-target" value="0" id="option2" class="needsclick" checked>手牌
+      </label>
+      <label class="am-btn am-btn-secondary am-btn-xl">
+        <input type="radio" name="tile-target" value="1" id="option3" class="needsclick">副露
+      </label>
+      <label class="am-btn am-btn-secondary am-btn-xl">
+        <input type="radio" name="tile-target" value="2" id="option4" class="needsclick">暗槓
+      </label>
+    </div>
+  </div>
+  <div id="normal-keyboard">
+    <div class="am-btn-group am-btn-group-justify">
+      <a class="am-btn am-btn-default am-btn-xl tile-1" role="button">1</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-2" role="button">2</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-3" role="button">3</a>
+    </div>
+    <div class="am-btn-group am-btn-group-justify">
+      <a class="am-btn am-btn-default am-btn-xl tile-4" role="button">4</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-5" role="button">5</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-6" role="button">6</a>
+    </div>
+    <div class="am-btn-group am-btn-group-justify">
+      <a class="am-btn am-btn-default am-btn-xl tile-7" role="button">7</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-8" role="button">8</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-9" role="button">9</a>
+    </div>
+  </div>
+  <div id="special-keyboard">
+    <div class="am-btn-group am-btn-group-justify">
+      <a class="am-btn am-btn-default am-btn-xl tile-5" role="button">白</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-6" role="button">發</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-7" role="button">中</a>
+    </div>
+    <div class="am-btn-group am-btn-group-justify">
+      <a class="am-btn am-btn-default am-btn-xl tile-1" role="button">東</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-2" role="button">南</a>
+      <a class="am-btn am-btn-default am-btn-xl tile-3" role="button">西</a>
+    </div>
+    <div class="am-btn-group am-btn-group-justify">
+      <a class="am-btn am-btn-primary am-btn-xl tile-8 am-disabled" role="button"> </a>
+      <a class="am-btn am-btn-default am-btn-xl tile-4" role="button">北</a>
+      <a class="am-btn am-btn-primary am-btn-xl tile-9 am-disabled" role="button"> </a>
+    </div>
+  </div>
+  <div class="am-btn-group am-btn-group-justify">
+    <a class="am-btn am-btn-success am-btn-xl fuuro-submit" role="button">副露提出</a>
+    <a class="am-btn am-btn-danger am-btn-xl tile-submit" role="button">提出</a>
+    <a class="am-btn am-btn-warning am-btn-xl tile-reset" role="button">RESET</a>
+  </div>
+</div>
+
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="AmazeUI/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="AmazeUI/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="AmazeUI/assets/js/amazeui.min.js"></script>
+<script src="javascripts/score.js"></script>
+<script src="javascripts/mahjong-keyboard-control.js"></script>
+<script src="javascripts/score-calculator-control.js"></script>
+<script>
+  $(document).ready(function(){
+    $("ul li:eq(1)").addClass('am-active');
+  });
+</script>
+</body>
+</html>

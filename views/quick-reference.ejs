@@ -1,0 +1,249 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Mahjong Tool Box</title>
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="AmazeUI/assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="AmazeUI/assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="AmazeUI/assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="AmazeUI/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <link rel="stylesheet" href="AmazeUI/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="AmazeUI/assets/css/app.css">
+</head>
+<body>
+
+<%- include navbar.ejs %>
+
+<table class="am-table am-table-bordered">
+  <caption><h1>表１　点数早見表</h1></caption>
+  <tbody><tr>
+    <th colspan="2"></th>
+    <th>20符</th>
+    <th>25符</th>
+    <th>30符</th>
+    <th>40符</th>
+    <th>50符</th>
+    <th>60符</th>
+    <th>70符</th>
+    <th>80符</th>
+    <th>90符</th>
+    <th><span class="nowrap">100符</span></th>
+    <th><span class="nowrap">110符</span></th>
+  </tr>
+  <tr>
+  <th rowspan="9">親</th>
+  <th><span class="nowrap">1飜</span></th>
+  <td colspan="2" style="text-align:center">-</td>
+  <td style="background-color:#e5ccff">1500<br>(500)</td>
+  <td style="background-color:#b7ffb7">2000<br>(700)</td>
+  <td style="background-color:#ffd8b2">2400<br>(800)</td>
+  <td style="background-color:#e5ccff">2900<br>(1000)</td>
+  <td style="background-color:#F2F2F2">3400<br>(1200)</td>
+  <td style="background-color:#b7ffb7">3900<br>(1300)</td>
+  <td style="background-color:#F2F2F2">4400<br>(1500)</td>
+  <td style="background-color:#ffd8b2">4800<br>(1600)</td>
+  <td style="background-color:#F2F2F2">5300<br>(-)</td>
+  </tr>
+  <tr>
+  <th>2飜</th>
+  <td style="background-color:#b7ffb7">-<br>(700)</td>
+  <td style="background-color:#ffd8b2">2400<br>(-)</td>
+  <td style="background-color:#e5ccff">2900<br>(1000)</td>
+  <td style="background-color:#b7ffb7">3900<br>(1300)</td>
+  <td style="background-color:#ffd8b2">4800<br>(1600)</td>
+  <td style="background-color:#e5ccff">5800<br>(2000)</td>
+  <td style="background-color:#F2F2F2">6800<br>(2300)</td>
+  <td style="background-color:#b7ffb7">7700<br>(2600)</td>
+  <td style="background-color:#F2F2F2">8700<br>(2900)</td>
+  <td style="background-color:#ffd8b2">9600<br>(3200)</td>
+  <td style="background-color:#F2F2F2">10600<br>(3600)</td>
+  </tr>
+  <tr>
+  <th>3飜</th>
+  <td style="background-color:#b7ffb7">-<br>(1300)</td>
+  <td style="background-color:#ffd8b2">4800<br>(1600)</td>
+  <td style="background-color:#e5ccff">5800<br>(2000)</td>
+  <td style="background-color:#b7ffb7">7700<br>(2600)</td>
+  <td style="background-color:#ffd8b2">9600<br>(3200)</td>
+  <td style="background-color:#e5ccff">11600<br>(3900)</td>
+  <td colspan="5" rowspan="2" style="text-align:center; border-left-style:none;">満貫<br>12000<br>(4000)</td>
+  </tr>
+  <tr>
+  <th>4飜</th>
+  <td style="background-color:#b7ffb7">-<br>(2600)</td>
+  <td style="background-color:#ffd8b2">9600<br>(3200)</td>
+  <td style="background-color:#e5ccff">11600<br>(3900)</td>
+  <td colspan="3" style="border-right-color:#F9F9F9;"></td>
+  </tr>
+  <tr>
+  <th>5飜</th>
+  <td colspan="11" style="text-align:center;">満貫<br>12000<br>(4000)</td>
+  </tr>
+  <tr>
+  <th>6-7飜</th>
+  <td colspan="11" style="text-align:center;">跳満<br>18000<br>(6000)</td>
+  </tr>
+  <tr>
+  <th>8-10飜</th>
+  <td colspan="11" style="text-align:center;">倍満<br>24000<br>(8000)</td>
+  </tr>
+  <tr>
+  <th>11-12飜</th>
+  <td colspan="11" style="text-align:center;">三倍満<br>36000<br>(12000)</td>
+  </tr>
+  <tr>
+  <th>13飜以上</th>
+  <td colspan="11" style="text-align:center;">役満<br>48000<br>(16000)</td>
+  </tr>
+  <tr>
+  <tr>
+    <th colspan="2"></th>
+    <th>20符</th>
+    <th>25符</th>
+    <th>30符</th>
+    <th>40符</th>
+    <th>50符</th>
+    <th>60符</th>
+    <th>70符</th>
+    <th>80符</th>
+    <th>90符</th>
+    <th><span class="nowrap">100符</span></th>
+    <th><span class="nowrap">110符</span></th>
+  </tr>
+  <th rowspan="9">子</th>
+  <th>1飜</th>
+  <td colspan="2" style="text-align:center">-</td>
+  <td style="background-color:#b7ffb7">1000<br>(300-<br>500)</td>
+  <td style="background-color:#c6e2ff">1300<br>(400-<br>700)</td>
+  <td style="background-color:#ffdbff">1600<br>(400-<br>800)</td>
+  <td style="background-color:#b7ffb7">2000<br>(500-<br>1000)</td>
+  <td style="background-color:#F2F2F2">2300<br>(600-<br>1200)</td>
+  <td style="background-color:#c6e2ff">2600<br>(700-<br>1300)</td>
+  <td style="background-color:#e5ccff">2900<br>(800-<br>1500)</td>
+  <td style="background-color:#ffdbff">3200<br>(800-<br>1600)</td>
+  <td style="background-color:#F2F2F2">3600<br>(-)</td>
+  </tr>
+  <tr>
+  <th>2飜</th>
+  <td style="background-color:#c6e2ff">-<br>(400-<br>700)</td>
+  <td style="background-color:#ffdbff">1600<br>(-)</td>
+  <td style="background-color:#b7ffb7">2000<br>(500-<br>1000)</td>
+  <td style="background-color:#c6e2ff">2600<br>(700-<br>1300)</td>
+  <td style="background-color:#ffdbff">3200<br>(800-<br>1600)</td>
+  <td style="background-color:#b7ffb7">3900<br>(1000-<br>2000)</td>
+  <td style="background-color:#F2F2F2">4500<br>(1200-<br>2300)</td>
+  <td style="background-color:#c6e2ff">5200<br>(1300-<br>2600)</td>
+  <td style="background-color:#e5ccff">5800<br>(1500,<br>2900)</td>
+  <td style="background-color:#ffdbff">6400<br>(1600,<br>3200)</td>
+  <td style="background-color:#F2F2F2">7100<br>(1800-<br>3600)</td>
+  </tr>
+  <tr>
+  <th>3飜</th>
+  <td style="background-color:#c6e2ff">-<br>(1300-<br>2600)</td>
+  <td style="background-color:#ffdbff">3200<br>(800-<br>1600)</td>
+  <td style="background-color:#b7ffb7">3900<br>(1000-<br>2000)</td>
+  <td style="background-color:#c6e2ff">5200<br>(1300-<br>2600)</td>
+  <td style="background-color:#ffdbff">6400<br>(1600-<br>3200)</td>
+  <td style="background-color:#b7ffb7">7700<br>(2000-<br>3900)</td>
+  <td colspan="5" rowspan="2" style="text-align:center; border-left-style:none;">満貫<br>(8000)</td>
+  </tr>
+  <tr>
+  <th>4飜</th>
+  <td style="background-color:#c6e2ff">-<br>(1300-<br>2600)</td>
+  <td style="background-color:#ffdbff">6400<br>(1600-<br>3200)</td>
+  <td style="background-color:#b7ffb7">7700<br>(2000-<br>3900)</td>
+  <td colspan="3" style="border-right-color:#F9F9F9;"></td>
+  </tr>
+  <tr>
+  <th>5飜</th>
+  <td colspan="11" style="text-align:center;">満貫<br>8000<br>(2000-4000)</td>
+  </tr>
+  <tr>
+  <th>6-7飜</th>
+  <td colspan="11" style="text-align:center;">跳満<br>12000<br>(3000-6000)</td>
+  </tr>
+  <tr>
+  <th>8-10飜</th>
+  <td colspan="11" style="text-align:center;">倍満<br>16000<br>(4000-8000)</td>
+  </tr>
+  <tr>
+  <th>11-12飜</th>
+  <td colspan="11" style="text-align:center;">三倍満<br>24000<br>(6000-12000)</td>
+  </tr>
+  <tr>
+  <th>13飜以上</th>
+  <td colspan="11" style="text-align:center;">役満<br>32000<br>(8000-16000)</td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="am-table am-table-bordered">
+  <tbody>
+    <caption><h1>表２　役一覧 [<a href="https://ja.wikipedia.org/wiki/%E9%BA%BB%E9%9B%80%E3%81%AE%E5%BD%B9%E4%B8%80%E8%A6%A7">wikipedia</a>]</h1></caption>
+    <tr>
+    <th>一飜</th>
+    <td>立直 | 一発 | 門前清自摸和 | 平和 | 断么九 | 一盃口 | 役牌 | 嶺上開花 | 槍槓 | 海底摸月 | 河底撈魚</td>
+    </tr>
+    <tr>
+    <th>二飜</th>
+    <td>三色同順 | 一気通貫 | 混全帯么九 | 七対子 | 対々和 | 三暗刻 | 三槓子 | 三色同刻 | 混老頭 | 小三元 | ダブル立直</td>
+    </tr>
+    <tr>
+    <th>三飜</th>
+    <td>混一色 | 純全帯么九 | 二盃口</td>
+    </tr>
+    <tr>
+    <th>六飜</th>
+    <td>清一色</td>
+    </tr>
+    <tr>
+    <th>役満</th>
+    <td>国士無双 | 四暗刻 | 大三元 | 四喜和（大四喜・小四喜）| 字一色 | 緑一色 | 清老頭 | 九蓮宝燈 | 四槓子 | 天和 | 地和 | （人和）</td>
+    </tr>
+    <tr>
+    <th>特殊役</th>
+    <td>流し満貫</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="AmazeUI/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="AmazeUI/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="AmazeUI/assets/js/amazeui.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("ul li:eq(3)").addClass('am-active');
+  });
+</script>
+</body>
+</html>
