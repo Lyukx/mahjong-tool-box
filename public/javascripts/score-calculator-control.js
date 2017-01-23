@@ -125,6 +125,7 @@ function calculate(){
 
   var regularYakuList = ['七対子','国士無双','四暗刻','大三元','大四喜','小四喜','字一色','緑一色','清老頭','九蓮宝燈','四槓子','平和','断么九','一盃口','役牌','三色同順','一気通貫','混全帯么九','対々和','三暗刻','三槓子','三色同刻','混老頭','小三元','混一色','純全帯么九','二盃口','清一色'];
   var result = check(hand, ankan, fuuro, agari, parseInt($("#chanfon").val()), parseInt($("#menfon").val()), tumoFlag);
+  console.log(result);
   //result[0]: fu; result[1]: yaku-list; result == -1: NO-TEN
   if(result == -1){
     $('[name="display-yaku"]').append(tiles + htmlContent);
@@ -172,7 +173,6 @@ function calculate(){
       }
     }
     htmlContent = htmlContent + '<p>' + regularYakuList[yakuId] + '</p>';
-    return 1;
   }
 
   var doraNum = $("#doraNum").val();
@@ -197,6 +197,7 @@ function calculate(){
     htmlContent = htmlContent + '<h1>' + getPoint(han, result[0], oyaFlag) + '</h1>';
   }
   $('[name="display-yaku"]').append(tiles + htmlContent);
+  return 1;
 }
 
 $('.tile-submit').click(function () {
